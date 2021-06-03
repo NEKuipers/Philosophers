@@ -6,7 +6,7 @@
 #    By: nkuipers <nkuipers@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/06/03 13:39:02 by nkuipers      #+#    #+#                  #
-#    Updated: 2021/06/03 14:25:09 by nkuipers      ########   odam.nl          #
+#    Updated: 2021/06/03 14:47:25 by nkuipers      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,11 +39,11 @@ $(NAME): $(OFILES)
 	gcc $(CFLAGS) -c $< -o $@ -g
 
 clean:
-	@echo "$(WHITE)/-----      Cleaning cub3d     -----\\ $(RESET)"
+	@echo "$(WHITE)/-----      Cleaning up...     -----\\ $(RESET)"
 	@rm -f $(OFILES)
+	@echo "$(WHITE)Done"
 
 fclean: clean
-	@echo "$(WHITE)/-----      Fcleaning cub3d    -----\\ $(RESET)"
 	@rm -f $(NAME)
 
 re: fclean all
