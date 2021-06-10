@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/04 15:15:48 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/10 11:37:54 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/10 12:44:51 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,16 @@ void	clear_info_two(t_inf *inf)
 {
 	int	i;
 
-	if (inf->philos)
+	if (inf->guys)
 	{
 		i = 0;
 		while (i < inf->amount)
 		{
-			pthread_mutex_destroy(&inf->philos[i].mutex);
-			pthread_mutex_destroy(&inf->philos[i].eat_mutex);
+			pthread_mutex_destroy(&inf->guys[i].mutex);
+			pthread_mutex_destroy(&inf->guys[i].eat_mutex);
 			i++;
 		}
-		free(inf->philos);
+		free(inf->guys);
 	}
 	return ;
 }

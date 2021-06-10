@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/10 11:50:08 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/10 12:41:23 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/10 12:55:55 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,13 @@
 
 static void	*loop(void *a_guy)
 {
+	t_guy		*guy;
+	pthread_t	tid;
 
+	guy = (t_guy *)a_guy;
+	guy->last_eat = ft_time();
+	guy->limit = guy->last_eat + guy->inf->time_to_die;
+	
 }
 
 int	start_sim(t_inf *inf)
@@ -23,7 +29,7 @@ int	start_sim(t_inf *inf)
 	int			i;
 	void		*guy;
 
-	inf->start = get_time();
+	inf->start = ft_time();
 	i = 0;
 	while (i < inf->amount)
 	{

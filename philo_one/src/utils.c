@@ -6,13 +6,13 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/03 14:53:31 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/04 14:56:57 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/10 12:45:12 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo_one.h"
 
-uint64_t	get_time(void)
+uint64_t	ft_time(void)
 {
 	static struct timeval	tv;
 

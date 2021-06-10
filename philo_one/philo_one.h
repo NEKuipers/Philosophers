@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/03 14:03:25 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/10 12:41:04 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/10 13:29:39 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,14 @@
 # include <pthread.h>
 # include <sys/wait.h>
 # include <sys/time.h>
+
+# define EATING 	0
+# define SLEEPING	1
+# define TAKEN_FORK	2
+# define THINKING	3
+# define DIED	 	4
+# define DONE	 	5
+
 
 typedef struct s_guy
 {
@@ -43,7 +51,7 @@ typedef struct s_inf
 	uint64_t		time_to_sleep;
 	int				notepme;
 	uint64_t		start;
-	t_philo			*guys;
+	t_guy			*guys;
 	pthread_mutex_t	*forks_mutex;
 	pthread_mutex_t	write_mutex;
 	pthread_mutex_t	dead_mutex;
@@ -57,5 +65,6 @@ uint64_t			ft_time(void);
 int					parser(t_inf *inf, int ac, char **av);
 int					main(int ac, char **av);
 int					setup_mutex(t_inf *inf);
+int					start_sim(t_inf *inf);
 
 #endif
