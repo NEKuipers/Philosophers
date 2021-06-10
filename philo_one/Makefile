@@ -6,13 +6,13 @@
 #    By: nkuipers <nkuipers@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/06/03 13:39:02 by nkuipers      #+#    #+#                  #
-#    Updated: 2021/06/03 14:47:25 by nkuipers      ########   odam.nl          #
+#    Updated: 2021/06/04 20:53:58 by nkuipers      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= philo_one
 
-SRCS            =   main.c
+SRCS            =   main.c errorhandling.c utils.c
 CFILES          =   $(SRCS:%=src/%)
 OFILES          =   $(CFILES:.c=.o)
 CFLAGS          =   -Wall -Wextra -Werror
@@ -36,7 +36,7 @@ $(NAME): $(OFILES)
 	@echo "$(GREEN) Compiling completed. Name of executable is 'philo_one' $(RESET)"
 
 %.o: %.c
-	gcc $(CFLAGS) -c $< -o $@ -g
+	@gcc $(CFLAGS) -c $< -o $@ -g
 
 clean:
 	@echo "$(WHITE)/-----      Cleaning up...     -----\\ $(RESET)"
