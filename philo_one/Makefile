@@ -6,13 +6,13 @@
 #    By: nkuipers <nkuipers@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/06/03 13:39:02 by nkuipers      #+#    #+#                  #
-#    Updated: 2021/06/04 20:53:58 by nkuipers      ########   odam.nl          #
+#    Updated: 2021/06/10 11:50:17 by nkuipers      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= philo_one
 
-SRCS            =   main.c errorhandling.c utils.c
+SRCS            =   main.c errorhandling.c start_sim.c utils.c
 CFILES          =   $(SRCS:%=src/%)
 OFILES          =   $(CFILES:.c=.o)
 CFLAGS          =   -Wall -Wextra -Werror

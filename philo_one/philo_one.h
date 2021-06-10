@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/03 14:03:25 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/04 20:53:20 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/10 12:41:04 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # include <sys/wait.h>
 # include <sys/time.h>
 
-typedef struct		s_philo
+typedef struct s_guy
 {
 	int				position;
 	int				is_eating;
@@ -33,9 +33,9 @@ typedef struct		s_philo
 	struct s_inf	*inf;
 	pthread_mutex_t	mutex;
 	pthread_mutex_t	eat_mutex;
-}					t_philo;
+}					t_guy;
 
-typedef struct 		s_inf
+typedef struct s_inf
 {
 	int				amount;
 	uint64_t		time_to_die;
@@ -43,7 +43,7 @@ typedef struct 		s_inf
 	uint64_t		time_to_sleep;
 	int				notepme;
 	uint64_t		start;
-	t_philo			*philos;
+	t_philo			*guys;
 	pthread_mutex_t	*forks_mutex;
 	pthread_mutex_t	write_mutex;
 	pthread_mutex_t	dead_mutex;

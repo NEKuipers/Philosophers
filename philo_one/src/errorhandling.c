@@ -6,13 +6,13 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/04 15:15:48 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/04 20:49:53 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/10 11:37:54 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo_one.h"
 
-int		errormsg(char *msg)
+int	errormsg(char *msg)
 {
 	printf("%s", msg);
 	return (1);
@@ -20,7 +20,7 @@ int		errormsg(char *msg)
 
 void	clear_info_two(t_inf *inf)
 {
-	int i;
+	int	i;
 
 	if (inf->philos)
 	{
@@ -33,10 +33,10 @@ void	clear_info_two(t_inf *inf)
 		}
 		free(inf->philos);
 	}
-	return;
+	return ;
 }
 
-int		clear_info(t_inf *inf)
+int	clear_info(t_inf *inf)
 {
 	int	i;
 
