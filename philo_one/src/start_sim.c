@@ -6,11 +6,31 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/10 11:50:08 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/10 12:55:55 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/11 14:51:46 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo_one.h"
+
+static void	*monitor(void *a_guy)
+{
+	t_guy		*guy;
+
+	guy = (t_guy*)a_guy;
+	while (1)
+	{
+		pthread_mutex_lock(&guy->mutex);
+		if (!guy->is_eating && get_time() > guy->limit)
+		{
+			display_message(guy, DIED);
+			pthread_mutex_unlock(&guy->mutex);
+			pthread_mutex_unlock(&guy->inf->dead_mutex);
+			return ((void*)0);
+		}
+		pthread_mutex_unlock(&guy->mutex);
+		usleep(1000);
+	}
+}
 
 static void	*loop(void *a_guy)
 {
@@ -20,7 +40,16 @@ static void	*loop(void *a_guy)
 	guy = (t_guy *)a_guy;
 	guy->last_eat = ft_time();
 	guy->limit = guy->last_eat + guy->inf->time_to_die;
-	
+	if (pthread_create(&tid, NULL, &monitor, a_guy) != 0)
+		return (void *)1);
+	while (1)
+	{
+		// take_forks(guy);
+		// eat(guy);
+		// clean_forks(guy);
+		// print_status(guy);
+	}
+	return ((void *)0);
 }
 
 int	start_sim(t_inf *inf)
