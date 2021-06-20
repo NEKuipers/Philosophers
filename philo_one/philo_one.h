@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/03 14:03:25 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/10 13:29:39 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/20 11:33:11 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,12 +58,15 @@ typedef struct s_inf
 }					t_inf;
 
 int					clear_info(t_inf *inf);
+void				eating(t_guy *guy);
 int					errormsg(char *msg);
+void				fork_management(t_guy *guy);
 int					ft_atoi(const char *str);
 size_t				ft_strlen(const char *s);
 uint64_t			ft_time(void);
 int					parser(t_inf *inf, int ac, char **av);
 int					main(int ac, char **av);
+void				print_status(t_guy *guy, int status);
 int					setup_mutex(t_inf *inf);
 int					start_sim(t_inf *inf);
 

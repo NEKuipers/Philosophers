@@ -6,18 +6,22 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/03 14:53:31 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/10 12:45:12 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/20 11:25:39 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo_one.h"
 
+/* 
+** ft_time returns the current time in a uint64 variable.
+*/
+
 uint64_t	ft_time(void)
 {
-	static struct timeval	tv;
+	static struct timeval	time;
 
-	gettimeofday(&tv, NULL);
-	return ((tv.tv_sec * (uint64_t)1000) + (tv.tv_usec / 1000));
+	gettimeofday(&time, NULL);
+	return ((time.tv_sec * (uint64_t)1000) + (time.tv_usec / 1000));
 }
 
 size_t	ft_strlen(const char *s)
