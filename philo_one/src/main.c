@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/03 14:02:08 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/20 12:17:58 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/20 12:51:39 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,14 @@
 
 int	setup_mutex(t_inf *inf)
 {
-	int i;
+	int	i;
 
 	pthread_mutex_init(&inf->write_mutex, NULL);
 	pthread_mutex_init(&inf->dead_mutex, NULL);
 	pthread_mutex_lock(&inf->dead_mutex);
-	if (!(inf->forks_mutex =
-		(pthread_mutex_t*)malloc(sizeof(*(inf->forks_mutex)) * inf->amount)))
+	inf->forks_mutex =
+		(pthread_mutex_t *)malloc(sizeof(*(inf->forks_mutex)) * inf->amount);
+	if (inf->forks_mutex == NULL)
 		return (1);
 	i = 0;
 	while (i < inf->amount)

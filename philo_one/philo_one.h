@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/03 14:03:25 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/20 12:22:13 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/20 12:49:36 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,6 @@
 # define THINKING	3
 # define DIED	 	4
 # define DONE	 	5
-
 
 typedef struct s_guy
 {
