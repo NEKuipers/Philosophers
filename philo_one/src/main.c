@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/03 14:02:08 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/20 12:56:10 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/20 12:57:42 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,19 +70,19 @@ int	parser(t_inf *inf, int ac, char **av)
 	if (inf->guys == NULL)
 		return (1);
 	setup_guys(inf);
-	return(setup_mutex(inf));
+	return (setup_mutex(inf));
 }
 
 int	main(int ac, char **av)
 {
 	t_inf	inf;
-	
+
 	if (ac != 5 && ac != 6)
 		return (errormsg("Error: incorrect amount of arguments.\n"));
 	if (parser(&inf, ac, av))
 		return (clear_info(&inf) && errormsg("Error.\n"));
 	if (start_sim(&inf))
-		return (clear_info(&inf) && errormsg("Error.\n"));		
+		return (clear_info(&inf) && errormsg("Error.\n"));
 	pthread_mutex_lock(&inf.dead_mutex);
 	pthread_mutex_unlock(&inf.dead_mutex);
 	clear_info(&inf);

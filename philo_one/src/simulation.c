@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/10 11:50:08 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/20 12:54:12 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/20 12:57:03 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	eating_with_forks(t_guy *guy)
 	usleep(guy->inf->time_to_sleep * 1000);
 }
 
-static void *monitor_count(void *inf_ptr)
+static void	*monitor_count(void *inf_ptr)
 {
 	t_inf	*inf;
 	int		i;
