@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/10 11:50:08 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/20 12:23:55 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/20 12:54:12 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ static void	*monitor(void *guy_ptr)
 			print_status(guy, DIED);
 			pthread_mutex_unlock(&guy->mutex);
 			pthread_mutex_unlock(&guy->inf->dead_mutex);
-			return ((void*)0);
+			return ((void *)0);
 		}
 		pthread_mutex_unlock(&guy->mutex);
 		usleep(1000);
@@ -104,7 +104,7 @@ int	start_sim(t_inf *inf)
 	inf->start = ft_time();
 	if (inf->max_eats > 0)
 	{
-		if (pthread_create(&tid, NULL, &monitor_count, (void*)inf) != 0)
+		if (pthread_create(&tid, NULL, &monitor_count, (void *)inf) != 0)
 			return (1);
 		pthread_detach(tid);
 	}

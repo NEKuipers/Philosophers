@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/03 14:02:08 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/20 12:51:39 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/20 12:56:10 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	setup_mutex(t_inf *inf)
 	pthread_mutex_init(&inf->write_mutex, NULL);
 	pthread_mutex_init(&inf->dead_mutex, NULL);
 	pthread_mutex_lock(&inf->dead_mutex);
-	inf->forks_mutex =
+	inf->forks_mutex = \
 		(pthread_mutex_t *)malloc(sizeof(*(inf->forks_mutex)) * inf->amount);
 	if (inf->forks_mutex == NULL)
 		return (1);
@@ -34,7 +34,7 @@ int	setup_mutex(t_inf *inf)
 
 static void	setup_guys(t_inf *inf)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < inf->amount)
@@ -66,8 +66,8 @@ int	parser(t_inf *inf, int ac, char **av)
 		inf->time_to_eat < 60 || inf->time_to_sleep < 60 || inf->max_eats < 0)
 		return (1);
 	inf->forks_mutex = NULL;
-	if (!(inf->guys = 
-		(t_guy *)malloc(sizeof(*(inf->guys)) * inf->amount)))
+	inf->guys = (t_guy *)malloc(sizeof(*(inf->guys)) * inf->amount);
+	if (inf->guys == NULL)
 		return (1);
 	setup_guys(inf);
 	return(setup_mutex(inf));
@@ -78,11 +78,11 @@ int	main(int ac, char **av)
 	t_inf	inf;
 	
 	if (ac != 5 && ac != 6)
-		return(errormsg("Error: incorrect amount of arguments.\n"));
+		return (errormsg("Error: incorrect amount of arguments.\n"));
 	if (parser(&inf, ac, av))
-		return(clear_info(&inf) && errormsg("Error.\n"));
+		return (clear_info(&inf) && errormsg("Error.\n"));
 	if (start_sim(&inf))
-		return(clear_info(&inf) && errormsg("Error.\n"));		
+		return (clear_info(&inf) && errormsg("Error.\n"));		
 	pthread_mutex_lock(&inf.dead_mutex);
 	pthread_mutex_unlock(&inf.dead_mutex);
 	clear_info(&inf);
