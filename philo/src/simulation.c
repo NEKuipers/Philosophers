@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/10 11:50:08 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/23 10:26:35 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/23 10:36:23 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	eating_with_forks(t_guy *guy)
 	usleep(guy->inf->time_to_sleep * 1000);
 }
 
-static void	*monitor_count(void *inf_ptr)
+static void	*count_until_limit(void *inf_ptr)
 {
 	t_inf	*inf;
 	int		i;
@@ -57,7 +57,7 @@ static void	*monitor_count(void *inf_ptr)
 	return ((void *) 0);
 }
 
-static void	*monitor(void *guy_ptr)
+static void	*check_if_dead(void *guy_ptr)
 {
 	t_guy	*guy;
 
@@ -85,7 +85,7 @@ static void	*eat_sleep_think_repeat(void *guy_ptr)
 	guy = (t_guy *)guy_ptr;
 	guy->last_eat = ft_time();
 	guy->limit = guy->last_eat + guy->inf->time_to_die;
-	if (pthread_create(&tid, NULL, &monitor, guy_ptr) != 0)
+	if (pthread_create(&tid, NULL, &check_if_dead, guy_ptr) != 0)
 		return ((void *)1);
 	while (1)
 	{
@@ -104,7 +104,7 @@ int	start_sim(t_inf *inf)
 	inf->start = ft_time();
 	if (inf->max_eats > 0)
 	{
-		if (pthread_create(&tid, NULL, &monitor_count, (void *)inf) != 0)
+		if (pthread_create(&tid, NULL, &count_until_limit, (void *)inf) != 0)
 			return (1);
 		pthread_detach(tid);
 	}

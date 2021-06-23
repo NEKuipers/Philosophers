@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   philo_one.h                                        :+:    :+:            */
+/*   philo.h                                            :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/03 14:03:25 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/20 17:19:41 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/23 10:35:04 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,7 +60,6 @@ int					clear_info(t_inf *inf);
 void				eating_with_forks(t_guy *guy);
 int					errormsg(char *msg);
 int					ft_atoi(const char *str);
-size_t				ft_strlen(const char *s);
 uint64_t			ft_time(void);
 int					main(int ac, char **av);
 int					parser(t_inf *inf, int ac, char **av);
