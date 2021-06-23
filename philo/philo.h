@@ -6,12 +6,12 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/03 14:03:25 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/23 11:02:32 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/23 11:03:59 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef PHILO_ONE_H
-# define PHILO_ONE_H
+#ifndef PHILO_H
+# define PHILO_H
 # include <stdio.h>
 # include <unistd.h>
 # include <string.h>
