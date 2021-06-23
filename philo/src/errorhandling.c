@@ -6,11 +6,11 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/04 15:15:48 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/20 11:39:29 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/23 10:26:25 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo_one.h"
+#include "../philo.h"
 
 int	errormsg(char *msg)
 {

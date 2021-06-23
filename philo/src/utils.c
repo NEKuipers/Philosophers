@@ -6,11 +6,11 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/03 14:53:31 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/20 11:25:39 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/23 10:26:40 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo_one.h"
+#include "../philo.h"
 
 /* 
 ** ft_time returns the current time in a uint64 variable.

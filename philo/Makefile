@@ -6,11 +6,11 @@
 #    By: nkuipers <nkuipers@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/06/03 13:39:02 by nkuipers      #+#    #+#                  #
-#    Updated: 2021/06/20 12:21:24 by nkuipers      ########   odam.nl          #
+#    Updated: 2021/06/23 10:26:13 by nkuipers      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
-NAME			= philo_one
+NAME			= philo
 
 SRCS            =   main.c errorhandling.c simulation.c utils.c
 CFILES          =   $(SRCS:%=src/%)
@@ -31,9 +31,9 @@ RESET   = \x1b[0m
 all: $(NAME)
 
 $(NAME): $(OFILES)
-	@echo "$(WHITE)/-----      Compiling philo_one    -----\\ $(RESET)"
+	@echo "$(WHITE)/-----      Compiling philo    -----\\ $(RESET)"
 	@gcc $(CFLAGS) $(OFILES) -o $(NAME) -lpthread
-	@echo "$(GREEN) Compiling completed. Name of executable is 'philo_one' $(RESET)"
+	@echo "$(GREEN) Compiling completed. Name of executable is 'philo' $(RESET)"
 
 %.o: %.c
 	@gcc $(CFLAGS) -c $< -o $@ -g

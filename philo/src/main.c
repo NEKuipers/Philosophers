@@ -6,11 +6,11 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/03 14:02:08 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/20 12:57:42 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/23 10:26:30 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo_one.h"
+#include "../philo.h"
 
 int	setup_mutex(t_inf *inf)
 {

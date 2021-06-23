@@ -6,11 +6,11 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/10 11:50:08 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/20 12:57:03 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/23 10:26:35 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../philo_one.h"
+#include "../philo.h"
 
 void	eating_with_forks(t_guy *guy)
 {
