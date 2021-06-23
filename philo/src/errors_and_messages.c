@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   errorhandling.c                                    :+:    :+:            */
+/*   errors_and_messages.c                              :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/04 15:15:48 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/23 10:30:16 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/23 10:51:31 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	print_status(t_guy *guy, int status)
 	pthread_mutex_lock(&guy->inf->write_mutex);
 	if (end == 0)
 	{
-		printf("%ld\t", ft_time() - guy->inf->start);
+		printf("%llu\t", ft_time() - guy->inf->start);
 		if (status != DONE)
 			printf("%d", guy->position + 1);
 		if (status >= DIED)
