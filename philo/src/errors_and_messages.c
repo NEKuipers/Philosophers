@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/04 15:15:48 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/23 11:04:18 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/23 11:14:40 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,8 +30,7 @@ static char	*statusmsgs(int status)
 		return (" is thinking. \n");
 	if (status == DIED)
 		return (" died.\n");
-	return ("Everyone has eaten the specified number of times. \
-			Simulation complete.\n");
+	return ("Everyone has eaten the specified number of times.\n");
 }
 
 void	print_status(t_guy *guy, int status)
