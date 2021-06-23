@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/04 15:15:48 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/23 10:26:25 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/23 10:30:16 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,7 @@ int	clear_info(t_inf *inf)
 		}
 		free(inf->forks_mutex);
 	}
+	clear_info_two(inf);
 	pthread_mutex_destroy(&inf->write_mutex);
 	pthread_mutex_destroy(&inf->dead_mutex);
 	return (1);

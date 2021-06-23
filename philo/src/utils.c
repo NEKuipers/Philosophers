@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/03 14:53:31 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/23 10:26:40 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/23 10:31:38 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,16 +22,6 @@ uint64_t	ft_time(void)
 
 	gettimeofday(&time, NULL);
 	return ((time.tv_sec * (uint64_t)1000) + (time.tv_usec / 1000));
-}
-
-size_t	ft_strlen(const char *s)
-{
-	int	i;
-
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
 }
 
 static long int	ft_atoi_part_two(const char *str, int i, int pn)
