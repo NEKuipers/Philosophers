@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/03 14:03:25 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/23 10:35:04 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/23 11:02:32 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
 
 typedef struct s_guy
 {
-	int				position;
+	int				pos;
 	int				is_eating;
 	uint64_t		limit;
 	uint64_t		last_eat;

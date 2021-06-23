@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/04 15:15:48 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/23 10:56:11 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/23 11:02:51 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ void	print_status(t_guy *guy, int status)
 	{
 		printf("%llu\t", ft_time() - guy->inf->start);
 		if (status != DONE)
-			printf("%d", guy->position + 1);
+			printf("%d", guy->pos + 1);
 		if (status >= DIED)
 			end = 1;
 		printf("%s", statusmsgs(status));

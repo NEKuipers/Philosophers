@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/03 14:02:08 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/23 10:26:30 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/23 11:02:42 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ static void	setup_guys(t_inf *inf)
 	i = 0;
 	while (i < inf->amount)
 	{
-		inf->guys[i].position = i;
+		inf->guys[i].pos = i;
 		inf->guys[i].is_eating = 0;
 		inf->guys[i].left_fork = i;
 		inf->guys[i].right_fork = (i + 1) % inf->amount;
