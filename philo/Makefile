@@ -6,7 +6,7 @@
 #    By: nkuipers <nkuipers@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/06/03 13:39:02 by nkuipers      #+#    #+#                  #
-#    Updated: 2021/06/23 11:09:11 by nkuipers      ########   odam.nl          #
+#    Updated: 2021/06/25 16:16:50 by nkuipers      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
@@ -18,15 +18,15 @@ OFILES          =   $(CFILES:.c=.o)
 CFLAGS          =   -Wall -Wextra -Werror
 
 # COLORS
-WHITE   = \x1b[37;01m
-CYAN    = \x1b[36;01m
-PINK    = \x1b[35;01m
-BLUE    = \x1b[34;01m
-YELLOW  = \x1b[33;01m
-GREEN   = \x1b[32;01m
-RED     = \x1b[31;01m
-BLACK   = \x1b[30;01m
-RESET   = \x1b[0m
+WHITE   = \e[37;01m
+CYAN    = \e[36;01m
+PINK    = \e[35;01m
+BLUE    = \e[34;01m
+YELLOW  = \e[33;01m
+GREEN   = \e[32;01m
+RED     = \e[31;01m
+BLACK   = \e[30;01m
+RESET   = \e[0m
 
 all: $(NAME)
 
@@ -41,7 +41,7 @@ $(NAME): $(OFILES)
 clean:
 	@echo "$(WHITE)/-----      Cleaning up...     -----\\ $(RESET)"
 	@rm -f $(OFILES)
-	@echo "$(WHITE)Done"
+	@echo "$(WHITE)               Done"
 
 fclean: clean
 	@rm -f $(NAME)

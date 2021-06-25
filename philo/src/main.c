@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/03 14:02:08 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/25 11:51:49 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/25 16:18:08 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,7 +62,7 @@ int	parser(t_inf *inf, int ac, char **av)
 		inf->max_eats = ft_atoi(av[5]);
 	else
 		inf->max_eats = 0;
-	if (inf->amount < 2 || inf->amount > 100 || inf->time_to_die < 60 || \
+	if (inf->amount < 1 || inf->amount > 100 || inf->time_to_die < 60 || \
 		inf->time_to_eat < 60 || inf->time_to_sleep < 60 || inf->max_eats < 0)
 		return (1);
 	inf->forks_mutex = NULL;
