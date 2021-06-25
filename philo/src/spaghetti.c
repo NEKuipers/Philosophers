@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/10 11:50:08 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/24 14:53:08 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/25 11:48:37 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -131,4 +131,3 @@ int	start_sim(t_inf *inf)
 	}
 	return (0);
 }
-
