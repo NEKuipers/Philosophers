@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/03 14:03:25 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/24 14:51:23 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/25 19:44:27 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,6 +50,7 @@ typedef struct s_inf
 	uint64_t		time_to_eat;
 	uint64_t		time_to_sleep;
 	int				max_eats;
+	int				meflag;
 	pthread_t		tid;
 	uint64_t		start;
 	t_guy			*guys;
@@ -62,11 +63,16 @@ int					clear_info(t_inf *inf);
 void				eating_with_forks(t_guy *guy);
 int					errormsg(char *msg);
 int					ft_atoi(const char *str);
+char				*ft_strchr(const char *s, int c);
+size_t				ft_strlen(const char *s);
 uint64_t			ft_time(void);
+int					inputvalidator(char **argv);
 int					main(int ac, char **av);
 int					parser(t_inf *inf, int ac, char **av);
 void				print_status(t_guy *guy, int status);
+void				setup_guys(t_inf *inf);
 int					setup_mutex(t_inf *inf);
 int					start_sim(t_inf *inf);
+char				*statusmsgs(int status);
 
 #endif

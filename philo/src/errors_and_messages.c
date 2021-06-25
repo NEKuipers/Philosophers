@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/04 15:15:48 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/25 16:22:59 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/25 19:45:27 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int	errormsg(char *msg)
 	return (1);
 }
 
-static char	*statusmsgs(int status)
+char	*statusmsgs(int status)
 {
 	if (status == EATING)
 		return (" is eating.\n");
@@ -72,7 +72,7 @@ int	clear_info(t_inf *inf)
 {
 	int	i;
 
-	if (inf->forks_mutex)
+	if (inf->forks_mutex != NULL)
 	{
 		i = 0;
 		while (i < inf->amount)
@@ -82,6 +82,8 @@ int	clear_info(t_inf *inf)
 		}
 		free(inf->forks_mutex);
 	}
+	else
+		return (1);
 	clear_info_two(inf);
 	pthread_mutex_destroy(&inf->write_mutex);
 	pthread_mutex_destroy(&inf->dead_mutex);

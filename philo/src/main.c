@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/03 14:02:08 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/25 16:18:08 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/25 19:44:10 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,7 +32,7 @@ int	setup_mutex(t_inf *inf)
 	return (0);
 }
 
-static void	setup_guys(t_inf *inf)
+void	setup_guys(t_inf *inf)
 {
 	int	i;
 
@@ -52,36 +52,18 @@ static void	setup_guys(t_inf *inf)
 	}
 }
 
-int	parser(t_inf *inf, int ac, char **av)
-{
-	inf->amount = ft_atoi(av[1]);
-	inf->time_to_die = ft_atoi(av[2]);
-	inf->time_to_eat = ft_atoi(av[3]);
-	inf->time_to_sleep = ft_atoi(av[4]);
-	if (ac == 6)
-		inf->max_eats = ft_atoi(av[5]);
-	else
-		inf->max_eats = 0;
-	if (inf->amount < 1 || inf->amount > 100 || inf->time_to_die < 60 || \
-		inf->time_to_eat < 60 || inf->time_to_sleep < 60 || inf->max_eats < 0)
-		return (1);
-	inf->forks_mutex = NULL;
-	inf->guys = (t_guy *)malloc(sizeof(*(inf->guys)) * inf->amount);
-	if (inf->guys == NULL)
-		return (1);
-	setup_guys(inf);
-	return (setup_mutex(inf));
-}
-
 int	main(int ac, char **av)
 {
 	t_inf	inf;
 
-	if (ac != 5 && ac != 6)
-		return (errormsg("Error: incorrect amount of arguments.\n"));
-	if (parser(&inf, ac, av))
-		return (clear_info(&inf) && errormsg("Error.\n"));
-	if (start_sim(&inf))
+	inf.meflag = 0;
+	if ((ac != 5 && ac != 6) || !inputvalidator(av))
+		return (errormsg("Error: bad arguments.\n"));
+	if (parser(&inf, ac, av) == 1)
+		return (clear_info(&inf) && errormsg("Error: bad arguments.\n"));
+	if (inf.max_eats == 0 && inf.meflag == 0)
+		return (clear_info(&inf) && printf("0\t%s", statusmsgs(DONE)));
+	if (start_sim(&inf) == 1)
 		return (clear_info(&inf) && errormsg("Error.\n"));
 	pthread_mutex_lock(&inf.dead_mutex);
 	pthread_mutex_unlock(&inf.dead_mutex);

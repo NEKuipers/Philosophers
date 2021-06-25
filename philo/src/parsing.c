@@ -1,30 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   utils.c                                            :+:    :+:            */
+/*   parsing.c                                          :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
-/*   Created: 2021/06/03 14:53:31 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/25 19:14:11 by nkuipers      ########   odam.nl         */
+/*   Created: 2021/06/25 19:11:41 by nkuipers      #+#    #+#                 */
+/*   Updated: 2021/06/25 19:43:53 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
 
-/* 
-** ft_time returns the current time in a uint64 variable.
-*/
-
-uint64_t	ft_time(void)
-{
-	static struct timeval	time;
-
-	gettimeofday(&time, NULL);
-	return ((time.tv_sec * (uint64_t)1000) + (time.tv_usec / 1000));
-}
-
-static long int	ft_atoi_part_two(const char *str, int i, int pn)
+static long int	ft_atoi_long_part_two(const char *str, int i, int pn)
 {
 	unsigned long int	result;
 
@@ -43,7 +31,7 @@ static long int	ft_atoi_part_two(const char *str, int i, int pn)
 	return (result * pn);
 }
 
-int	ft_atoi(const char *str)
+static long int	ft_atoi_long(const char *str)
 {
 	int			i;
 	int			pn;
@@ -59,37 +47,55 @@ int	ft_atoi(const char *str)
 		pn = -1;
 		i++;
 	}
-	result = ft_atoi_part_two(str, i, pn);
+	result = ft_atoi_long_part_two(str, i, pn);
 	return (result);
 }
 
-size_t	ft_strlen(const char *s)
+int	inputvalidator(char **argv)
 {
 	int	i;
+	int	j;
 
-	i = 0;
-	while (s[i] != '\0')
-		i++;
-	return (i);
-}
-
-char	*ft_strchr(const char *s, int c)
-{
-	char	*string;
-	int		i;
-	char	d;
-
-	d = (char)c;
-	i = 0;
-	string = (char *)s;
-	while (string[i] != '\0')
+	i = 1;
+	while (argv[i])
 	{
-		if (string[i] == d)
-			return (&string[i]);
+		if (ft_strlen(argv[i]) == 0)
+			return (0);
+		j = 0;
+		while (argv[i][j])
+		{
+			if (ft_strchr(" 0123456789/0", argv[i][j]) == NULL)
+				return (0);
+			j++;
+		}
+		if (ft_atoi_long(argv[i]) > 2147483647 || \
+			ft_atoi_long(argv[i]) < -2147483648)
+			return (0);
 		i++;
 	}
-	if (d == '\0')
-		return (&string[i]);
+	return (1);
+}
+
+int	parser(t_inf *inf, int ac, char **av)
+{
+	inf->forks_mutex = NULL;
+	inf->amount = ft_atoi(av[1]);
+	inf->time_to_die = ft_atoi(av[2]);
+	inf->time_to_eat = ft_atoi(av[3]);
+	inf->time_to_sleep = ft_atoi(av[4]);
+	if (ac == 6)
+		inf->max_eats = ft_atoi(av[5]);
 	else
-		return (NULL);
+	{
+		inf->max_eats = 0;
+		inf->meflag = 1;
+	}
+	if (inf->amount < 1 || inf->amount > 200 || inf->time_to_die < 60 || \
+		inf->time_to_eat < 60 || inf->time_to_sleep < 60 || inf->max_eats < 0)
+		return (1);
+	inf->guys = (t_guy *)malloc(sizeof(*(inf->guys)) * inf->amount);
+	if (inf->guys == NULL)
+		return (1);
+	setup_guys(inf);
+	return (setup_mutex(inf));
 }

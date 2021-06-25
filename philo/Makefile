@@ -6,13 +6,13 @@
 #    By: nkuipers <nkuipers@student.codam.nl>         +#+                      #
 #                                                    +#+                       #
 #    Created: 2021/06/03 13:39:02 by nkuipers      #+#    #+#                  #
-#    Updated: 2021/06/25 16:16:50 by nkuipers      ########   odam.nl          #
+#    Updated: 2021/06/25 19:14:28 by nkuipers      ########   odam.nl          #
 #                                                                              #
 # **************************************************************************** #
 
 NAME			= philo
 
-SRCS            =   main.c errors_and_messages.c spaghetti.c utils.c
+SRCS            =   main.c errors_and_messages.c parsing.c spaghetti.c utils.c 
 CFILES          =   $(SRCS:%=src/%)
 OFILES          =   $(CFILES:.c=.o)
 CFLAGS          =   -Wall -Wextra -Werror
