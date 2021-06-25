@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/04 15:15:48 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/25 11:40:07 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/25 11:49:30 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ void	print_status(t_guy *guy, int status)
 	pthread_mutex_lock(&guy->inf->write_mutex);
 	if (end == 0)
 	{
-		printf("%lu\t", ft_time() - guy->inf->start);
+		printf("%llu\t", ft_time() - guy->inf->start);
 		if (status != DONE)
 			printf("%d", guy->pos + 1);
 		if (status >= DIED)
