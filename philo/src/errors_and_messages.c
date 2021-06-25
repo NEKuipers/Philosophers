@@ -11,6 +11,8 @@
 /* ************************************************************************** */
 
 #include "../philo.h"
+#define __STDC_FORMAT_MACROS
+#include <inttypes.h>
 
 int	errormsg(char *msg)
 {
@@ -40,7 +42,7 @@ void	print_status(t_guy *guy, int status)
 	pthread_mutex_lock(&guy->inf->write_mutex);
 	if (end == 0)
 	{
-		printf("%llu\t", ft_time() - guy->inf->start);
+		printf("%" PRIu64 "\t", ft_time() - guy->inf->start);
 		if (status != DONE)
 			printf("%d", guy->pos + 1);
 		if (status >= DIED)
