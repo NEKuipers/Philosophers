@@ -1,16 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        ::::::::            */
-/*   simulation.c                                       :+:    :+:            */
+/*   spaghetti.c                                        :+:    :+:            */
 /*                                                     +:+                    */
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/10 11:50:08 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/23 10:36:23 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/24 14:53:08 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
+
+/*
+**		The function below is where every separate thread goes through the
+**		process of taking forks, eating when they are able to grab two, and
+**		releasing them and sleeping when they're done. 
+*/
 
 void	eating_with_forks(t_guy *guy)
 {
@@ -54,6 +60,7 @@ static void	*count_until_limit(void *inf_ptr)
 	}
 	print_status(&inf->guys[0], DONE);
 	pthread_mutex_unlock(&inf->dead_mutex);
+	pthread_join(inf->tid, NULL);
 	return ((void *) 0);
 }
 
@@ -70,6 +77,7 @@ static void	*check_if_dead(void *guy_ptr)
 			print_status(guy, DIED);
 			pthread_mutex_unlock(&guy->mutex);
 			pthread_mutex_unlock(&guy->inf->dead_mutex);
+			pthread_join(guy->tid, NULL);
 			return ((void *)0);
 		}
 		pthread_mutex_unlock(&guy->mutex);
@@ -87,6 +95,7 @@ static void	*eat_sleep_think_repeat(void *guy_ptr)
 	guy->limit = guy->last_eat + guy->inf->time_to_die;
 	if (pthread_create(&tid, NULL, &check_if_dead, guy_ptr) != 0)
 		return ((void *)1);
+	pthread_detach(tid);
 	while (1)
 	{
 		eating_with_forks(guy);
@@ -106,6 +115,7 @@ int	start_sim(t_inf *inf)
 	{
 		if (pthread_create(&tid, NULL, &count_until_limit, (void *)inf) != 0)
 			return (1);
+		inf->tid = tid;
 		pthread_detach(tid);
 	}
 	i = 0;
@@ -114,9 +124,11 @@ int	start_sim(t_inf *inf)
 		guy = (void *)(&inf->guys[i]);
 		if (pthread_create(&tid, NULL, &eat_sleep_think_repeat, guy))
 			return (1);
+		inf->guys[i].tid = tid;
 		pthread_detach(tid);
 		usleep(100);
 		i++;
 	}
 	return (0);
 }
+
