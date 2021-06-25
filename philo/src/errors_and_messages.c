@@ -6,7 +6,11 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/04 15:15:48 by nkuipers      #+#    #+#                 */
+<<<<<<< HEAD
 /*   Updated: 2021/06/25 11:37:39 by nkuipers      ########   odam.nl         */
+=======
+/*   Updated: 2021/06/23 11:22:59 by nkuipers      ########   odam.nl         */
+>>>>>>> b26e8e5d37ce13b384c69ff2d5f2becaae370f76
 /*                                                                            */
 /* ************************************************************************** */
 
