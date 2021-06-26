@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/10 11:50:08 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/25 11:48:37 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/26 14:35:13 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,6 +40,13 @@ void	eating_with_forks(t_guy *guy)
 	usleep(guy->inf->time_to_sleep * 1000);
 }
 
+/*
+**	This function below counts until every philosopher has
+**	eaten N amount of times, if that argument was provided.
+**
+**	When they have eaten enough, the program ends.
+*/
+
 static void	*count_until_limit(void *inf_ptr)
 {
 	t_inf	*inf;
@@ -64,6 +71,13 @@ static void	*count_until_limit(void *inf_ptr)
 	return ((void *) 0);
 }
 
+/*
+**	This function is for a separate thread per philosopher.
+**	It monitors whether the time since their last meal has exceeded
+**	the amount of time they can go without eating, locked by mutex.
+**	If so, they die, and the program ends.
+*/
+
 static void	*check_if_dead(void *guy_ptr)
 {
 	t_guy	*guy;
@@ -85,6 +99,13 @@ static void	*check_if_dead(void *guy_ptr)
 	}
 }
 
+/*
+**	Each philosopher gets a timestamp of their last meal, and
+**	produces another thread that monitors whether or not they've
+**	died. The while loop just keeps calling their daily routine
+**	of eating, sleeping and thinking over and over again.
+*/
+
 static void	*eat_sleep_think_repeat(void *guy_ptr)
 {
 	t_guy		*guy;
@@ -103,6 +124,15 @@ static void	*eat_sleep_think_repeat(void *guy_ptr)
 	}
 	return ((void *)0);
 }
+
+/*
+**	Below is where the simulation is initialized in two steps. 
+**	If a number of times each philosopher must eat argument was provided,
+**	an additional thread is created to count towards this number.
+**
+**	The while loop creates threads for every individual philosopher and 
+**	sends them into the function above.
+*/
 
 int	start_sim(t_inf *inf)
 {

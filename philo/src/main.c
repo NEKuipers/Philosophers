@@ -6,11 +6,17 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/03 14:02:08 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/25 19:44:10 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/26 14:20:42 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
+
+/* 
+** 	The function below initializes the mutexes: one to protect the statusprints,
+**	one to protect the death check, and one for every fork in an array.
+**	The fork array is set up for (fork_mutex * amount of philosophers).
+*/ 
 
 int	setup_mutex(t_inf *inf)
 {
@@ -31,6 +37,13 @@ int	setup_mutex(t_inf *inf)
 	}
 	return (0);
 }
+
+/*
+**	This function prepares all the required information for the individual
+**	philosopher threads. They're all assigned a seat at the table and their
+**	own left and right forks, as well as their own mutex which locks when
+**	they eat.
+*/
 
 void	setup_guys(t_inf *inf)
 {

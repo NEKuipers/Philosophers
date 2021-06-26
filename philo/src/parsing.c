@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/25 19:11:41 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/25 19:43:53 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/26 14:24:40 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,12 @@ static long int	ft_atoi_long(const char *str)
 	return (result);
 }
 
+/*
+**	The function below validates the input, using atoi_long above to 
+**	make sure no number greater than MAX_INT is parsed. Only positive 
+**	numbers are passed on to regular atoi to parse into the structure.
+*/
+
 int	inputvalidator(char **argv)
 {
 	int	i;
@@ -75,6 +81,13 @@ int	inputvalidator(char **argv)
 	}
 	return (1);
 }
+
+/*
+**	The function below parses the arguments and saves them in the inf
+**	main structure. The program mustn't run when any of the ms values
+**	are below 60. Finally, an array of philosophers is created, to 
+**	be initialized in setup_guys().
+*/
 
 int	parser(t_inf *inf, int ac, char **av)
 {
