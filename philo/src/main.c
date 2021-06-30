@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/03 14:02:08 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/26 14:20:42 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/30 15:47:20 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 ** 	The function below initializes the mutexes: one to protect the statusprints,
 **	one to protect the death check, and one for every fork in an array.
 **	The fork array is set up for (fork_mutex * amount of philosophers).
-*/ 
+*/
 
 int	setup_mutex(t_inf *inf)
 {
