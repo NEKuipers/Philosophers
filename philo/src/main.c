@@ -65,6 +65,16 @@ void	setup_guys(t_inf *inf)
 	}
 }
 
+/*
+** 	The main is fairly simple, it splits the initialization process into
+**	separate stages and returns to main in between.
+**	The meflag variable is used so that when 0 is specified as the
+**	number of times each philosopher must eat it immediately prints
+**	that the eating is done without accessing any other function.
+**	Without it, this would always happen if that argument was not
+**	provided since I set it to 0.
+*/
+
 int	main(int ac, char **av)
 {
 	t_inf	inf;

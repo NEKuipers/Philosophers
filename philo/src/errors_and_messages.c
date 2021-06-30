@@ -6,13 +6,13 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/04 15:15:48 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/25 19:45:27 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/06/30 15:37:54 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../philo.h"
-#define __STDC_FORMAT_MACROS
 #include <inttypes.h>
+#define __STDC_FORMAT_MACROS
 
 int	errormsg(char *msg)
 {
