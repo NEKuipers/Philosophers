@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/04 15:15:48 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/30 15:37:54 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/07/02 15:16:19 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@
 
 int	errormsg(char *msg)
 {
-	printf("%s", msg);
+	write(2, msg, ft_strlen(msg));
 	return (1);
 }
 
@@ -29,7 +29,7 @@ char	*statusmsgs(int status)
 	if (status == TAKEN_FORK)
 		return (" has taken a fork.\n");
 	if (status == THINKING)
-		return (" is thinking. \n");
+		return (" is thinking.\n");
 	if (status == DIED)
 		return (" died.\n");
 	return ("Everyone has eaten the specified number of times.\n");
@@ -84,8 +84,6 @@ int	clear_info(t_inf *inf)
 		}
 		free(inf->forks_mutex);
 	}
-	else
-		return (1);
 	clear_info_two(inf);
 	pthread_mutex_destroy(&inf->write_mutex);
 	pthread_mutex_destroy(&inf->dead_mutex);

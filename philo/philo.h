@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/03 14:03:25 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/25 19:44:27 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/07/02 15:19:14 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,7 +37,6 @@ typedef struct s_guy
 	int				left_fork;
 	int				right_fork;
 	int				eat_count;
-	pthread_t		tid;
 	struct s_inf	*inf;
 	pthread_mutex_t	mutex;
 	pthread_mutex_t	eat_mutex;
@@ -51,7 +50,6 @@ typedef struct s_inf
 	uint64_t		time_to_sleep;
 	int				max_eats;
 	int				meflag;
-	pthread_t		tid;
 	uint64_t		start;
 	t_guy			*guys;
 	pthread_mutex_t	*forks_mutex;

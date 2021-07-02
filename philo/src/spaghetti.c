@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/10 11:50:08 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/06/26 14:35:13 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/07/02 15:19:22 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,7 +67,6 @@ static void	*count_until_limit(void *inf_ptr)
 	}
 	print_status(&inf->guys[0], DONE);
 	pthread_mutex_unlock(&inf->dead_mutex);
-	pthread_join(inf->tid, NULL);
 	return ((void *) 0);
 }
 
@@ -91,7 +90,6 @@ static void	*check_if_dead(void *guy_ptr)
 			print_status(guy, DIED);
 			pthread_mutex_unlock(&guy->mutex);
 			pthread_mutex_unlock(&guy->inf->dead_mutex);
-			pthread_join(guy->tid, NULL);
 			return ((void *)0);
 		}
 		pthread_mutex_unlock(&guy->mutex);
@@ -145,7 +143,6 @@ int	start_sim(t_inf *inf)
 	{
 		if (pthread_create(&tid, NULL, &count_until_limit, (void *)inf) != 0)
 			return (1);
-		inf->tid = tid;
 		pthread_detach(tid);
 	}
 	i = 0;
@@ -154,7 +151,6 @@ int	start_sim(t_inf *inf)
 		guy = (void *)(&inf->guys[i]);
 		if (pthread_create(&tid, NULL, &eat_sleep_think_repeat, guy))
 			return (1);
-		inf->guys[i].tid = tid;
 		pthread_detach(tid);
 		usleep(100);
 		i++;
