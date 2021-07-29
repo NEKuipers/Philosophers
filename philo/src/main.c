@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/03 14:02:08 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/07/02 15:27:17 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/07/29 10:20:31 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,6 +63,38 @@ void	setup_guys(t_inf *inf)
 		pthread_mutex_lock(&inf->guys[i].eat_mutex);
 		i++;
 	}
+}
+
+/*
+**	The function below parses the arguments and saves them in the inf
+**	main structure. The program mustn't run when any of the ms values
+**	are below 60. Finally, an array of philosophers is created, to 
+**	be initialized in setup_guys().
+*/
+
+int	parser(t_inf *inf, int ac, char **av)
+{
+	inf->amount = ft_atoi(av[1]);
+	inf->time_to_die = ft_atoi(av[2]);
+	inf->time_to_eat = ft_atoi(av[3]);
+	inf->time_to_sleep = ft_atoi(av[4]);
+	if (ac == 6)
+		inf->max_eats = ft_atoi(av[5]);
+	else
+	{
+		inf->max_eats = 0;
+		inf->meflag = 1;
+	}
+	if (inf->amount < 1 || inf->amount > 200 || inf->time_to_die < 60 || \
+		inf->time_to_eat < 60 || inf->time_to_sleep < 60 || inf->max_eats < 0)
+		return (1);
+	inf->forks_mutex = NULL;
+	inf->guys = NULL;
+	inf->guys = (t_guy *)malloc(sizeof(*(inf->guys)) * inf->amount);
+	if (inf->guys == NULL)
+		return (1);
+	setup_guys(inf);
+	return (setup_mutex(inf));
 }
 
 /*
