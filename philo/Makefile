@@ -44,7 +44,7 @@ all: $(NAME)
 
 $(NAME): $(OFILES)
 	@echo "$(WHITE)/-----      Compiling philo    -----\\ $(RESET)"
-	@gcc $(CFLAGS) $(OFILES) -o $(NAME) -lpthread
+	@gcc $(CFLAGS) $(OFILES) -o $(NAME) -pthread
 	@echo "$(GREEN) Compiling completed. Name of executable is 'philo' $(RESET)"
 
 %.o: %.c
