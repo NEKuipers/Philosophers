@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/04 15:15:48 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/07/02 15:16:19 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/08/02 20:20:22 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,7 +74,7 @@ int	clear_info(t_inf *inf)
 {
 	int	i;
 
-	if (inf->forks_mutex != NULL)
+	if (inf->forks_mutex)
 	{
 		i = 0;
 		while (i < inf->amount)

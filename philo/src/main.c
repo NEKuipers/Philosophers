@@ -6,7 +6,7 @@
 /*   By: nkuipers <nkuipers@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2021/06/03 14:02:08 by nkuipers      #+#    #+#                 */
-/*   Updated: 2021/07/29 10:20:31 by nkuipers      ########   odam.nl         */
+/*   Updated: 2021/08/02 20:22:17 by nkuipers      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -87,7 +87,7 @@ int	parser(t_inf *inf, int ac, char **av)
 	}
 	if (inf->amount < 1 || inf->amount > 200 || inf->time_to_die < 60 || \
 		inf->time_to_eat < 60 || inf->time_to_sleep < 60 || inf->max_eats < 0)
-		return (1);
+		return (2);
 	inf->forks_mutex = NULL;
 	inf->guys = NULL;
 	inf->guys = (t_guy *)malloc(sizeof(*(inf->guys)) * inf->amount);
@@ -110,11 +110,15 @@ int	parser(t_inf *inf, int ac, char **av)
 int	main(int ac, char **av)
 {
 	t_inf	inf;
+	int		ret;
 
 	inf.meflag = 0;
 	if ((ac != 5 && ac != 6) || !inputvalidator(av))
 		return (errormsg("Error: bad arguments.\n"));
-	if (parser(&inf, ac, av) == 1)
+	ret = parser(&inf, ac, av);
+	if (ret == 2)
+		return (errormsg("Error: bad arguments.\n"));
+	if (ret == 1)
 		return (clear_info(&inf) && errormsg("Error: bad arguments.\n"));
 	if (inf.max_eats == 0 && inf.meflag == 0)
 		return (clear_info(&inf) && printf("0\t%s", statusmsgs(DONE)));
